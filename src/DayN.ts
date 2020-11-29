@@ -2,9 +2,9 @@ import { readFileSync } from 'fs';
 
 const day = 'N';
 
-const inputFile = readFileSync(`./inputFiles/Day ${day}.txt`, 'utf-8').trim();
+const inputFile = readFileSync(`./inputFiles/Day${day}.txt`, 'utf-8').trim();
 
-console.log(`Day ${day}\n`);
+console.log(`\n### Day ${day} ###\n`);
 
 const challengeInput = inputFile.split(',').map((n) => +n);
 
@@ -12,7 +12,7 @@ const challengeInput = inputFile.split(',').map((n) => +n);
 Description part 1
 */
 
-console.log(`Part 1`);
+console.log(`--- Part 1 ---`);
 
 const solvePart1 = (input: number[]): number => {
   return input.length;
@@ -50,7 +50,7 @@ measuringExecutionTime(() => {
 Description part 1
 */
 
-console.log(`\nPart 2`);
+console.log(`\n--- Part 2 ---`);
 
 const solvePart2 = (input: number[]): number => {
   return input.reduce((result, num) => result + num, 0);

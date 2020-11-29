@@ -1,1 +1,1 @@
-import './Day N';
+import './DayN';
