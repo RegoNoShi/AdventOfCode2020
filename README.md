@@ -1,2 +1,3 @@
 # AdventOfCode2020
-Solutions for the "Advent of Code 2020" in TypeScript
+
+Solutions for the [Advent of Code 2020](https://adventofcode.com/2020) in TypeScript (4.1.2)

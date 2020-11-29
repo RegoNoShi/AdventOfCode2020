@@ -1,0 +1,30 @@
+{
+  "name": "adventofcode2020",
+  "version": "1.0.0",
+  "description": "Solutions for the \"Advent of Code 2020\" in TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "run:dev": "nodemon",
+    "run:all": "ts-node src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RegoNoShi/AdventOfCode2020.git"
+  },
+  "author": "Massimo Omodei",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RegoNoShi/AdventOfCode2020/issues"
+  },
+  "homepage": "https://github.com/RegoNoShi/AdventOfCode2020#readme",
+  "devDependencies": {
+    "@types/node": "^14.14.10",
+    "nodemon": "^2.0.6",
+    "ts-node": "^9.0.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  }
+}
