@@ -30,7 +30,7 @@ const runAndVerifyPart1 = ({ input, expectedOutput }: TestCasePart1) => {
   if (output == expectedOutput) {
     console.log(`✅ Input: ${input} -> Output: ${output}`);
   } else {
-    console.log(`❌ Input: ${input} -> Expected output: ${expectedOutput}, got ${output}`);
+    console.log(`❌ Input: ${input} -> Expected output ${expectedOutput}, got ${output}`);
   }
 };
 
@@ -38,8 +38,13 @@ console.log('Test cases:');
 testCasesPart1.forEach(runAndVerifyPart1);
 
 measuringExecutionTime(() => {
-  console.log('Challenge:');
-  runAndVerifyPart1({ input: challengeInput, expectedOutput: 2 });
+  const expectedOutput = 2;
+  const output = solvePart1(challengeInput);
+  if (output == expectedOutput) {
+    console.log(`✅ Challenge: ${output}`);
+  } else {
+    console.log(`❌ Challenge: Expected output ${expectedOutput}, got ${output}`);
+  }
 });
 
 /*
@@ -64,7 +69,7 @@ const runAndVerifyPart2 = ({ input, expectedOutput }: TestCasePart2) => {
   if (output == expectedOutput) {
     console.log(`✅ Input: ${input} -> Output: ${output}`);
   } else {
-    console.log(`❌ Input: ${input} -> Expected output: ${expectedOutput}, got ${output}`);
+    console.log(`❌ Input: ${input} -> Expected output ${expectedOutput}, got ${output}`);
   }
 };
 
@@ -72,6 +77,11 @@ console.log('Test cases:');
 testCasesPart2.forEach(runAndVerifyPart2);
 
 measuringExecutionTime(() => {
-  console.log('Challenge:');
-  runAndVerifyPart2({ input: challengeInput, expectedOutput: 84 });
+  const expectedOutput = 84;
+  const output = solvePart2(challengeInput);
+  if (output == expectedOutput) {
+    console.log(`✅ Challenge: ${output}`);
+  } else {
+    console.log(`❌ Challenge: Expected output ${expectedOutput}, got ${output}`);
+  }
 });
