@@ -1,6 +1,6 @@
 import { measuringExecutionTime, readInputFile } from './utilts';
 
-const day = 'N';
+const day = '2';
 
 console.log(`\n🎄🎄🎄🎄🎄 Day ${day} 🎁🎁🎁🎁🎁\n`);
 
