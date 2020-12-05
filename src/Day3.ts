@@ -62,11 +62,6 @@ Starting at the top-left corner of your map and following a slope of right 3 and
 
 console.log(`🤶🤶🤶 Part 1 🎅🎅🎅`);
 
-type Pos = {
-  x: number;
-  y: number;
-};
-
 const solvePart1 = (input: string[], xDiff: number = 3, yDiff: number = 1): number => {
   let trees = 0;
   for (let x = xDiff, y = yDiff; y < input.length; x += xDiff, y += yDiff) {
