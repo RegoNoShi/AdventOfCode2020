@@ -58,10 +58,10 @@ The first step of attacking the weakness in the XMAS data is to find the first n
 
 console.log(`🤶🤶🤶 Part 1 🎅🎅🎅`);
 
-const isValid = (num: number, preamble: number[]): boolean => {
-  for (let j = 0; j < preamble.length - 1; j++) {
-    for (let k = j + 1; k < preamble.length; k++) {
-      if (num === preamble[j] + preamble[k]) {
+const isValid = (array: number[], targetPosition: number, addendsStart: number, addendsEnd: number): boolean => {
+  for (let j = addendsStart; j <= addendsEnd - 1; j++) {
+    for (let k = j + 1; k <= addendsEnd; k++) {
+      if (array[targetPosition] === array[j] + array[k]) {
         return true;
       }
     }
@@ -70,11 +70,12 @@ const isValid = (num: number, preamble: number[]): boolean => {
 };
 
 const solvePart1 = (input: number[], preambleLength: number): number | undefined => {
-  let preamble = input.slice(0, preambleLength);
+  let startIndex = 0;
+  let endIndex = preambleLength - 1;
   for (let i = preambleLength; i < input.length; i++) {
-    if (isValid(input[i], preamble)) {
-      preamble.shift();
-      preamble.push(input[i]);
+    if (isValid(input, i, startIndex, endIndex)) {
+      startIndex += 1;
+      endIndex += 1;
     } else {
       return input[i];
     }
@@ -155,7 +156,10 @@ console.log(`\n🧝‍♂️🧝‍♂️🧝‍♂️ Part 2 🧝‍♀️🧝�
 
 const solvePart2 = (input: number[], target: number): number | undefined => {
   for (let setSize = 2; setSize < input.length; setSize++) {
-    let sum = input.slice(0, setSize).reduce((s, n) => s + n);
+    let sum = 0;
+    for (let i = 0; i < setSize; i++) {
+      sum += input[i];
+    }
     for (let i = setSize; i < input.length; i++) {
       if (sum == target) {
         return Math.min(...input.slice(i - setSize, i)) + Math.max(...input.slice(i - setSize, i));
