@@ -169,46 +169,24 @@ What is the earliest timestamp such that all of the listed bus IDs depart at off
 
 console.log(`\n🧝‍♂️🧝‍♂️🧝‍♂️ Part 2 🧝‍♀️🧝‍♀️🧝‍♀️`);
 
-const bezoutCoefficients = (a: bigint, b: bigint): bigint[] => {
-  let os = BigInt(1),
-    s = BigInt(0);
-  let ot = BigInt(0),
-    t = BigInt(1);
-
-  while (b != BigInt(0)) {
-    const q = a / b;
-    const tmpA = a;
-    a = b;
-    b = tmpA - q * b;
-
-    const tmpOs = os,
-      tmpOt = ot;
-    os = s;
-    s = tmpOs - q * s;
-    ot = t;
-    t = tmpOt - q * t;
-  }
-
-  return [os, ot];
-};
-
 const solvePart2 = (input: string) => {
   const busDepartTimes = input.split(',');
-  const busConstraints: bigint[][] = [];
+  const busIds: bigint[] = [];
+  const busOffsets: bigint[] = [];
   for (const i in busDepartTimes) {
     if (busDepartTimes[i] !== 'x') {
-      busConstraints.push([BigInt(+busDepartTimes[i]), BigInt(-i)]);
+      busIds.push(BigInt(+busDepartTimes[i]));
+      busOffsets.push(BigInt(i));
     }
   }
 
-  let mod = BigInt(busConstraints[0][0]);
-  let time = BigInt(busConstraints[0][1]);
-
-  for (let i = 1; i < busConstraints.length; i++) {
-    const coefficients = bezoutCoefficients(mod, busConstraints[i][0]);
-    time = time * coefficients[1] * busConstraints[i][0] + busConstraints[i][1] * coefficients[0] * mod;
-    mod *= busConstraints[i][0];
-    time = ((time % mod) + mod) % mod;
+  let time = BigInt(0);
+  let offset = busIds[0];
+  for (let i = 1; i < busIds.length; i++) {
+    while ((time + busOffsets[i]) % busIds[i] !== BigInt(0)) {
+      time += offset;
+    }
+    offset *= busIds[i];
   }
 
   return Number(time);
