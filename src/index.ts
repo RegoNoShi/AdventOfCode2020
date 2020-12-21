@@ -17,3 +17,4 @@ import './Day16';
 import './Day17';
 import './Day18';
 import './Day19';
+import './Day20';
